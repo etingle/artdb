@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
+use Input, App\User, Form, Import, Hash, App\Auth;
 
 
 class UserController extends Controller {
@@ -10,7 +12,7 @@ class UserController extends Controller {
 	*/
 	public function __construct() {
 		# Make sure BaseController construct gets called
-		parent::__construct();
+		#parent::__construct();
         $this->beforeFilter('guest',
         	array(
         		'only' => array('getLogin','getSignup')
@@ -21,7 +23,7 @@ class UserController extends Controller {
 	* @return View
 	*/
 	public function getSignup() {
-		return View::make('signup');
+		return view('signup');
 	}
 
 

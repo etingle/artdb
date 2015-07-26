@@ -24,7 +24,8 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-
+Route::get('signup','UserController@getSignup');
+Route::post('signup','UserController@postSignup');
 
 
 Route::get('mysql-test', function() {
