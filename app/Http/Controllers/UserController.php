@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
-use Input, App\User, Form, Import, Hash, App\Auth;
-
+use Input, App\User, Form, Import, Hash, Validator, Auth, Session;
 
 class UserController extends Controller {
 	/**
@@ -53,8 +52,9 @@ class UserController extends Controller {
 
             	# Log the user in
             	Auth::login($user);
-
-            	return Redirect::to('/')->with('flash_message', 'Welcome to ArtDB!');
+                Session::flash('flash_message','Welcome to ArtDB');
+                return redirect('/');
+            	#return Redirect::to('/')->with('flash_message', 'Welcome to ArtDB!');
             } else {
             	return Redirect::to('/signup')
             	->withInput()
