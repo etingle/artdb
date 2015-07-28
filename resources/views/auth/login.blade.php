@@ -1,23 +1,27 @@
 <!-- resources/views/auth/login.blade.php -->
 
-<form method="POST" action="/auth/login">
+
+@extends('_master')
+
+
+@section('header')
+Log in
+@stop
+
+@section('content')
+
+
+{!! Form::open(array('url' => '/login')) !!}
     {!! csrf_field() !!}
 
-    <div>
-        Email
-        <input type="email" name="email" value="{{ old('email') }}">
-    </div>
+    Username<br>
+    {!! Form::text('username' )!!}<br><br>
 
-    <div>
-        Password
-        <input type="password" name="password" id="password">
-    </div>
+    Password:<br>
+    {!! Form::password('password') !!}<br><br>
 
-    <div>
-        <input type="checkbox" name="remember"> Remember Me
-    </div>
+    {!! Form::submit('Submit') !!}
 
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
+{!! Form::close() !!}
+
+@stop
